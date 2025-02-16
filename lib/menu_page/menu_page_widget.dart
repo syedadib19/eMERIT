@@ -1,3 +1,4 @@
+import 'package:emerit/addMerit.dart';
 import 'package:flutter/services.dart';
 
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -6,7 +7,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'menu_page_model.dart';
 import 'package:emerit/viewList.dart';
-import 'dart:convert';
 export 'menu_page_model.dart';
 
 class MenuPageWidget extends StatefulWidget {
@@ -112,6 +112,10 @@ class _MenuPageWidgetState extends State<MenuPageWidget> {
                   child: FFButtonWidget(
                     onPressed: () {
                       print('Button pressed ...');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context)=>EmeritSystem())
+                      );
                     },
                     text: 'Give Merit',
                     options: FFButtonOptions(
