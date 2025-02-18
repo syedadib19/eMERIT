@@ -1,4 +1,6 @@
 import 'package:emerit/addMerit.dart';
+import 'package:emerit/batchNFC.dart';
+import 'package:emerit/databaseupdate.dart';
 import 'package:flutter/services.dart';
 
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -174,6 +176,10 @@ class _MenuPageWidgetState extends State<MenuPageWidget> {
                   child: FFButtonWidget(
                     onPressed: () {
                       print('Button pressed ...');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context)=>UpdateButton())
+                      );
                     },
                     text: 'Give Points in batch NFC',
                     options: FFButtonOptions(
@@ -189,6 +195,38 @@ class _MenuPageWidgetState extends State<MenuPageWidget> {
                                 color: Colors.white,
                                 letterSpacing: 0.0,
                               ),
+                      elevation: 0.0,
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: const AlignmentDirectional(0.0, 0.0),
+                child: Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                  child: FFButtonWidget(
+                    onPressed: () {
+                      print('Button pressed ...');
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context)=>UpdateButton())
+                      );
+                    },
+                    text: 'Update to database',
+                    options: FFButtonOptions(
+                      height: 40.0,
+                      padding:
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                      iconPadding:
+                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: const Color(0xFFEF9A39),
+                      textStyle:
+                      FlutterFlowTheme.of(context).titleSmall.override(
+                        fontFamily: 'Inter Tight',
+                        color: Colors.white,
+                        letterSpacing: 0.0,
+                      ),
                       elevation: 0.0,
                       borderRadius: BorderRadius.circular(8.0),
                     ),
