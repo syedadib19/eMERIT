@@ -2,7 +2,10 @@
     package="com.mycompany.emerit"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET"/>
-
+    <!-- NFC function
+    <uses-permission android:name="android.permission.NFC"/>
+    <uses-feature android:name="android.hardware.nfc" android:required="true"/>
+    ends here NFC!-->
 
     <application
         android:label="emerit"
