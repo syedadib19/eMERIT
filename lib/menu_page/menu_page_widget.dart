@@ -1,8 +1,10 @@
+import 'package:emerit/NFCstudentinfo.dart';
 import 'package:emerit/addMerit.dart';
 import 'package:emerit/burnNFC.dart';
 import 'package:emerit/readNFC.dart';
 import 'package:emerit/databaseupdate.dart';
 import 'package:flutter/services.dart';
+import 'package:emerit/NFCstudentinfo.dart'; //check this later
 
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -275,8 +277,12 @@ class _MenuPageWidgetState extends State<MenuPageWidget> {
                   child: FFButtonWidget(
                     onPressed: () {
                       print('Button pressed ...');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context)=>NFCgatherinfo())
+                      );
                     },
-                    text: 'Merit History',
+                    text: 'Get Student Info',
                     options: FFButtonOptions(
                       height: 40.0,
                       padding:
