@@ -1,10 +1,11 @@
+import 'package:emerit/NFCbatchmerit.dart';
 import 'package:emerit/NFCstudentinfo.dart';
 import 'package:emerit/addMerit.dart';
+import 'package:emerit/NFCindividualmerit.dart';
 import 'package:emerit/burnNFC.dart';
 import 'package:emerit/readNFC.dart';
 import 'package:emerit/databaseupdate.dart';
 import 'package:flutter/services.dart';
-import 'package:emerit/NFCstudentinfo.dart'; //check this later
 
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -76,289 +77,359 @@ class _MenuPageWidgetState extends State<MenuPageWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
-                child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context)=>SecondScreen())
-                    );
-                  },
-                  text: 'View Points',
-                  options: FFButtonOptions(
-                    height: 40.0,
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                    iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: const Color(0xFFEF39B6),
-                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Inter Tight',
-                          color: Colors.white,
-                          letterSpacing: 0.0,
-                        ),
-                    elevation: 0.0,
-                    borderRadius: BorderRadius.circular(8.0),
-
-                  ),
-                ),
-              ),
-              Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+          child: SingleChildScrollView(  // Add this
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Align(
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () {
                       print('Button pressed ...');
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context)=>EmeritSystem())
+                        MaterialPageRoute(builder: (context)=>SecondScreen())
                       );
                     },
-                    text: 'Give Merit',
+                    text: 'View Points',
                     options: FFButtonOptions(
                       height: 40.0,
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                       iconPadding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: const Color(0xFF178324),
-                      textStyle: FlutterFlowTheme.of(context)
-                          .titleSmall
-                          .override(
+                      color: const Color(0xFFEF39B6),
+                      textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                             fontFamily: 'Inter Tight',
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                            color: Colors.white,
                             letterSpacing: 0.0,
                           ),
                       elevation: 0.0,
                       borderRadius: BorderRadius.circular(8.0),
-                    ),
-                  ),
-                ),
-              ),
-              Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                  child: FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
-                    },
-                    text: 'Deduct Merit',
-                    options: FFButtonOptions(
-                      height: 40.0,
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: const Color(0xFFEF3962),
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Inter Tight',
-                                color: Colors.white,
-                                letterSpacing: 0.0,
-                              ),
-                      elevation: 0.0,
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                  ),
-                ),
-              ),
-              Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                  child: FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context)=>NFCWriterApp())
-                      );
-                    },
-                    text: 'Update NFC collegenumber',
-                    options: FFButtonOptions(
-                      height: 40.0,
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: const Color(0xFFEF9A39),
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Inter Tight',
-                                color: Colors.white,
-                                letterSpacing: 0.0,
-                              ),
-                      elevation: 0.0,
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                  ),
-                ),
-              ),
 
-              Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                  child: FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context)=>NFCReaderApp())
-                      );
-                    },
-                    text: 'Read NFC collegenumber',
-                    options: FFButtonOptions(
-                      height: 40.0,
-                      padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      iconPadding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: const Color(0xFFEF9A39),
-                      textStyle:
-                      FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Inter Tight',
-                        color: Colors.white,
-                        letterSpacing: 0.0,
-                      ),
-                      elevation: 0.0,
-                      borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
                 ),
-              ),
+                Align(
+                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                    child: FFButtonWidget(
+                      onPressed: () {
+                        print('Button pressed ...');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context)=>EmeritSystem())
+                        );
+                      },
+                      text: 'Give Merit',
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: const Color(0xFF178324),
+                        textStyle: FlutterFlowTheme.of(context)
+                            .titleSmall
+                            .override(
+                              fontFamily: 'Inter Tight',
+                              color:
+                                  FlutterFlowTheme.of(context).primaryBackground,
+                              letterSpacing: 0.0,
+                            ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                    child: FFButtonWidget(
+                      onPressed: () {
+                        print('Button pressed ...');
+                      },
+                      text: 'Deduct Merit',
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: const Color(0xFFEF3962),
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Inter Tight',
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                    child: FFButtonWidget(
+                      onPressed: () {
+                        print('Button pressed ...');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context)=>NFCWriterApp())
+                        );
+                      },
+                      text: 'Update NFC collegenumber',
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: const Color(0xFFEF9A39),
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Inter Tight',
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                  ),
+                ),
 
-              Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                  child: FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context)=>UpdateButton())
-                      );
-                    },
-                    text: 'Update to database',
-                    options: FFButtonOptions(
-                      height: 40.0,
-                      padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      iconPadding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: const Color(0xFFEF9A39),
-                      textStyle:
-                      FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Inter Tight',
-                        color: Colors.white,
-                        letterSpacing: 0.0,
+                Align(
+                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                    child: FFButtonWidget(
+                      onPressed: () {
+                        print('Button pressed ...');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context)=>NFCReaderApp())
+                        );
+                      },
+                      text: 'Read NFC collegenumber',
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding:
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: const Color(0xFFEF9A39),
+                        textStyle:
+                        FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Inter Tight',
+                          color: Colors.white,
+                          letterSpacing: 0.0,
+                        ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
-                      elevation: 0.0,
-                      borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
                 ),
-              ),
-              Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                  child: FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context)=>NFCgatherinfo())
-                      );
-                    },
-                    text: 'Get Student Info',
-                    options: FFButtonOptions(
-                      height: 40.0,
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: const Color(0xFF806D26),
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Inter Tight',
-                                color: Colors.white,
-                                letterSpacing: 0.0,
-                              ),
-                      elevation: 0.0,
-                      borderRadius: BorderRadius.circular(8.0),
+
+                Align(
+                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                    child: FFButtonWidget(
+                      onPressed: () {
+                        print('Button pressed ...');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context)=>NFCBatchPage())
+                        );
+                      },
+                      text: 'NFC give merit batch',
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding:
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: const Color(0xFFEF9A39),
+                        textStyle:
+                        FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Inter Tight',
+                          color: Colors.white,
+                          letterSpacing: 0.0,
+                        ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
-                  child: FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
-                    },
-                    text: 'Settings',
-                    options: FFButtonOptions(
-                      height: 40.0,
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: const Color(0xFF176FAB),
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Inter Tight',
-                                color: Colors.white,
-                                letterSpacing: 0.0,
-                              ),
-                      elevation: 0.0,
-                      borderRadius: BorderRadius.circular(8.0),
+
+
+
+                Align(
+                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                    child: FFButtonWidget(
+                      onPressed: () {
+                        print('Button pressed ...');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context)=>NFCMeritPage())
+                        );
+                      },
+                      text: 'NFC give merit individual',
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding:
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: const Color(0xFFEF9A39),
+                        textStyle:
+                        FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Inter Tight',
+                          color: Colors.white,
+                          letterSpacing: 0.0,
+                        ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 90.0, 0.0, 0.0),
-                  child: FFButtonWidget(
-                    onPressed: () {
-                      SystemNavigator.pop();
-                    },
-                    text: 'LogOut',
-                    options: FFButtonOptions(
-                      height: 40.0,
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: const Color(0xFF814A62),
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Inter Tight',
-                                color: Colors.white,
-                                letterSpacing: 0.0,
-                              ),
-                      elevation: 0.0,
-                      borderRadius: BorderRadius.circular(8.0),
+
+                Align(
+                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                    child: FFButtonWidget(
+                      onPressed: () {
+                        print('Button pressed ...');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context)=>FetchDataPage())
+                        );
+                      },
+                      text: 'Update to database',
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding:
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: const Color(0xFFEF9A39),
+                        textStyle:
+                        FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Inter Tight',
+                          color: Colors.white,
+                          letterSpacing: 0.0,
+                        ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+                Align(
+                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                    child: FFButtonWidget(
+                      onPressed: () {
+                        print('Button pressed ...');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context)=>NFCgatherinfo())
+                        );
+                      },
+                      text: 'Get Student Info',
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: const Color(0xFF806D26),
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Inter Tight',
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
+                    child: FFButtonWidget(
+                      onPressed: () {
+                        print('Button pressed ...');
+                      },
+                      text: 'Settings',
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: const Color(0xFF176FAB),
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Inter Tight',
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 90.0, 0.0, 0.0),
+                    child: FFButtonWidget(
+                      onPressed: () {
+                        SystemNavigator.pop();
+                      },
+                      text: 'LogOut',
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: const Color(0xFF814A62),
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Inter Tight',
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
