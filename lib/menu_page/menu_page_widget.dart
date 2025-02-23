@@ -317,7 +317,7 @@ class _MenuPageWidgetState extends State<MenuPageWidget> {
                         print('Button pressed ...');
                         Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context)=>FetchDataPage())
+                            MaterialPageRoute(builder: (context)=>MyAppsync())
                         );
                       },
                       text: 'Update to database',

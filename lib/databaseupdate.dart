@@ -1,81 +1,46 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 
-class FetchDataPage extends StatefulWidget {
+
+class MyAppsync extends StatefulWidget {
   @override
-  _FetchDataPageState createState() => _FetchDataPageState();
+  _MyAppState createState() => _MyAppState();
 }
 
-class _FetchDataPageState extends State<FetchDataPage> {
-  List<dynamic> students = [];
-  bool isLoading = false;
-  String errorMessage = "";
+class _MyAppState extends State<MyAppsync> {
+  List<Map<String, String>> students = [];
 
-  Future<void> fetchData() async {
-    setState(() {
-      isLoading = true;
-      errorMessage = "";
-    });
+  Future<void> syncAndFetchData() async {
+    final response = await http.get(Uri.parse("https://mrsmbetongsarawak.edu.my/emerit/api/sync_mdb_to_mysql.php"));
 
-    try {
-      final response = await http.get(Uri.parse("https://mrsmbetongsarawak.edu.my/emerit/api/get_data.php"));
+    if (response.statusCode == 200) {
       final result = json.decode(response.body);
-
-      if (result["success"] == true) {
-        setState(() {
-          students = result["data"];
-        });
+      if (result['success']) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(result['message'])));
       } else {
-        setState(() {
-          errorMessage = result["error"] ?? "Unknown error";
-        });
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Error: ${result['message']}")));
       }
-    } catch (e) {
-      setState(() {
-        errorMessage = "Failed to fetch data: ${e.toString()}";
-      });
-    } finally {
-      setState(() {
-        isLoading = false;
-      });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Server error!")));
     }
   }
 
   @override
-  void initState() {
-    super.initState();
-    fetchData(); // Auto-fetch data when page loads
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Students from Access DB")),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (isLoading) CircularProgressIndicator(),
-            if (errorMessage.isNotEmpty) Text(errorMessage, style: TextStyle(color: Colors.red)),
-            if (!isLoading && students.isNotEmpty)
-              Expanded(
-                child: ListView.builder(
-                  itemCount: students.length,
-                  itemBuilder: (context, index) {
-                    final student = students[index];
-                    return ListTile(
-                      title: Text(student["name"]),
-                      subtitle: Text("College #: ${student["college_number"]} | Address: ${student["address"]}"),
-                    );
-                  },
-                ),
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text("Sync MDB to MySQL")),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: syncAndFetchData,
+                child: Text("Sync Data"),
               ),
-            ElevatedButton(
-              onPressed: fetchData,
-              child: Text("Refresh Data"),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
